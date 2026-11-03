@@ -1,4 +1,9 @@
 package org.example.campaigntask.repository.seller;
 
-public class SellerRepository {
+import org.example.campaigntask.model.seller.Seller;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface SellerRepository extends JpaRepository<Seller,Long> {
 }
