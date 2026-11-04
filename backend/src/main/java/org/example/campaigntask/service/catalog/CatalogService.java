@@ -1,6 +1,7 @@
 package org.example.campaigntask.service.catalog;
 
 
+import org.example.campaigntask.dto.catalog.KeywordResponse;
 import org.example.campaigntask.dto.catalog.ProductResponse;
 import org.example.campaigntask.dto.catalog.TownResponse;
 import org.example.campaigntask.repository.catalog.KeywordRepository;
@@ -32,5 +33,9 @@ public class CatalogService {
     public List<TownResponse> getTowns(){
         return townRepository.findAll(Sort.by("id")).stream()
                 .map(town -> new TownResponse(town.getId(),town.getName())).toList();
+    }
+    public List<KeywordResponse> getKeywords(String query){
+        return keywordRepository.findTop10ByNameContainingIgnoreCaseOrderByNameAsc(query).stream()
+                .map(keyword -> new KeywordResponse(keyword.getId(), keyword.getName())).toList();
     }
 }

@@ -1,10 +1,12 @@
 package org.example.campaigntask.controller.catalog;
 
+import org.example.campaigntask.dto.catalog.KeywordResponse;
 import org.example.campaigntask.dto.catalog.ProductResponse;
 import org.example.campaigntask.dto.catalog.TownResponse;
 import org.example.campaigntask.service.catalog.CatalogService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -25,4 +27,6 @@ public class CatalogController {
     public List<TownResponse> getAllTowns(){
         return catalogService.getTowns();
     }
+    @GetMapping("/keywords")
+    public List<KeywordResponse> getAllKeywords(@RequestParam(defaultValue = "") String query){return catalogService.getKeywords(query);}
 }
