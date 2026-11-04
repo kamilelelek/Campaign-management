@@ -35,7 +35,7 @@ public class CatalogService {
                 .map(town -> new TownResponse(town.getId(),town.getName())).toList();
     }
     public List<KeywordResponse> getKeywords(String query){
-        return keywordRepository.findTop10ByNameContainingIgnoreCaseOrderByNameAsc(query).stream()
+        return keywordRepository.findTop10ByNameStartingWithIgnoreCaseOrderByNameAsc(query).stream()
                 .map(keyword -> new KeywordResponse(keyword.getId(), keyword.getName())).toList();
     }
 }

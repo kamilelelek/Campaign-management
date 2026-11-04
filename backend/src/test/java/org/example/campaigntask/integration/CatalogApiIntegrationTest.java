@@ -46,6 +46,15 @@ class CatalogApiIntegrationTest {
     }
 
     @Test
+    void getKeywords_returnsOnlyKeywordsStartingWithQuery() throws Exception {
+        mockMvc.perform(get("/api/keywords").param("query", "e"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(2)))
+                .andExpect(jsonPath("$[0].name").value("electronics"))
+                .andExpect(jsonPath("$[1].name").value("equipment"));
+    }
+
+    @Test
     void getKeywords_ignoresCaseWhenFiltering() throws Exception {
         mockMvc.perform(get("/api/keywords").param("query", "LAP"))
                 .andExpect(status().isOk())
