@@ -1,9 +1,7 @@
 package org.example.campaigntask.model.campaign;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.example.campaigntask.model.catalog.Keyword;
 import org.example.campaigntask.model.catalog.Product;
 import org.example.campaigntask.model.catalog.Town;
@@ -16,6 +14,8 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Setter
+@AllArgsConstructor
+@Builder
 public class Campaign {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,5 +42,6 @@ public class Campaign {
             joinColumns = @JoinColumn(name = "campaign_id"),
             inverseJoinColumns = @JoinColumn(name = "keyword_id")
     )
+    @Builder.Default
     private Set<Keyword> keywords = new HashSet<>();
 }
