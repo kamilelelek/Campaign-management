@@ -44,7 +44,7 @@ cd backend
 | GET | `/api/seller` | Current seller and Emerald balance | 200 |
 | GET | `/api/products` | Products | 200 |
 | GET | `/api/towns` | Towns | 200 |
-| GET | `/api/keywords?query=` | Up to 10 keywords matching the query, for typeahead | 200 |
+| GET | `/api/keywords?query=` | Up to 10 keywords starting with the query, for typeahead | 200 |
 | GET | `/api/campaigns` | Campaigns | 200 |
 | POST | `/api/campaigns` | Create a campaign | 201 |
 | PUT | `/api/campaigns/{id}` | Update a campaign | 200 |

@@ -59,14 +59,14 @@ class CatalogServiceTest {
         Keyword keyword = new Keyword();
         keyword.setId(3L);
         keyword.setName("laptop");
-        when(keywordRepository.findTop10ByNameContainingIgnoreCaseOrderByNameAsc("lap")).thenReturn(List.of(keyword));
+        when(keywordRepository.findTop10ByNameStartingWithIgnoreCaseOrderByNameAsc("lap")).thenReturn(List.of(keyword));
 
         assertThat(catalogService.getKeywords("lap")).containsExactly(new KeywordResponse(3L, "laptop"));
     }
 
     @Test
     void getKeywords_returnsEmptyList_whenNothingMatches() {
-        when(keywordRepository.findTop10ByNameContainingIgnoreCaseOrderByNameAsc("xyz")).thenReturn(List.of());
+        when(keywordRepository.findTop10ByNameStartingWithIgnoreCaseOrderByNameAsc("xyz")).thenReturn(List.of());
 
         assertThat(catalogService.getKeywords("xyz")).isEmpty();
     }
