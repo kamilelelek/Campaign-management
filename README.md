@@ -1,6 +1,6 @@
 # Campaign Management
 
-A REST API that lets a seller create, edit and delete an advertising campaign for each product they sell. Campaign funds are deducted from the seller's Emerald account.
+A web application and REST API that let a seller create, edit and delete an advertising campaign for each product they sell. Campaign funds are deducted from the seller's Emerald account.
 
 ## Tech stack
 
@@ -9,6 +9,9 @@ A REST API that lets a seller create, edit and delete an advertising campaign fo
 - H2 in-memory database
 - Lombok
 - JUnit 5, Mockito, AssertJ, MockMvc
+- React
+- TypeScript
+- Vite
 
 ## Running the application
 
@@ -26,6 +29,18 @@ The API is available at `http://localhost:8085/api`.
 The database is created on startup and filled from `backend/src/main/resources/data.sql`: one seller with a balance of 1000.00, 4 products, 8 towns and 12 keywords. All changes are lost when the application stops.
 
 The H2 console is available at `http://localhost:8085/h2-console`, with the JDBC URL `jdbc:h2:mem:campaigns`.
+
+## Running the frontend
+
+You need Node.js and the backend running on port 8085.
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The application is available at `http://localhost:5173`. In development, Vite proxies `/api` requests to the backend, so CORS configuration is not needed.
 
 ## Running the tests
 
